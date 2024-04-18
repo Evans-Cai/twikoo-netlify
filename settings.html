@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <!--禁止溯源-->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 页面不缓存 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!---->
+    <link rel="icon" href="favicon.ico">
+    <!---->
+    <!-- 在 head 标签中添加 meta 标签，并设置 viewport-fit=cover 值 -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!---->
+    <title>settings</title>
+    <style>
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999;
+        background-color: #9ed6fd;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+      }
+      #loader-wrapper.fadeOut {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      #loader-wrapper #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #fff;
+        -webkit-animation: loader-spin 2s linear infinite;
+        -ms-animation: loader-spin 2s linear infinite;
+        -moz-animation: loader-spin 2s linear infinite;
+        -o-animation: loader-spin 2s linear infinite;
+        animation: loader-spin 2s linear infinite;
+        z-index: 1001
+      }
+      #loader-wrapper #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #fff;
+        -webkit-animation: loader-spin 3s linear infinite;
+        -moz-animation: loader-spin 3s linear infinite;
+        -o-animation: loader-spin 3s linear infinite;
+        -ms-animation: loader-spin 3s linear infinite;
+        animation: loader-spin 3s linear infinite
+      }
+      #loader-wrapper #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #fff;
+        -moz-animation: loader-spin 1.5s linear infinite;
+        -o-animation: loader-spin 1.5s linear infinite;
+        -ms-animation: loader-spin 1.5s linear infinite;
+        -webkit-animation: loader-spin 1.5s linear infinite;
+        animation: loader-spin 1.5s linear infinite
+      }
+      @-webkit-keyframes loader-spin {
+        0% {
+          -webkit-transform: rotate(0);
+          -ms-transform: rotate(0);
+          transform: rotate(0)
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg)
+        }
+      }
+      @keyframes loader-spin {
+        0% {
+          -webkit-transform: rotate(0);
+          -ms-transform: rotate(0);
+          transform: rotate(0)
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg)
+        }
+      }
+      #loader-wrapper .loader-section {
+        position: fixed;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: rgba(33, 177, 252, .3);
+        z-index: 1000;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+      }
+      #loader-wrapper .loader-section.section-left {
+        left: 0
+      }
+      #loader-wrapper .loader-section.section-right {
+        right: 0
+      }
+      #loader-wrapper .load_title {
+        font-family: 'Open Sans', serif;
+        color: #fff;
+        font-size: 19px;
+        width: 100%;
+        text-align: center;
+        z-index: 9999999999999;
+        position: absolute;
+        top: 60%;
+        opacity: 1;
+        line-height: 30px
+      }
+      #loader-wrapper .load_title span {
+        font-weight: 400;
+        font-style: italic;
+        font-size: 13px;
+        color: #fff;
+        opacity: .5
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <!--<div class="load_title">正在加载系统资源，请耐心等待</div>-->
+    </div>
+    <!---->
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.6.32/twikoo.all.min.js"></script>
+    <script>
+    twikoo.init({
+      envId: location.origin, // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+      el: '#tcomment', // 容器元素
+      // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+      // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+      // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/twikoojs/twikoo/blob/main/src/client/utils/i18n/index.js
+    })
+</script>
+  </body>
+</html>
